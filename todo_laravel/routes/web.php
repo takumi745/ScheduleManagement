@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use app\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +19,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['as' => 'usersetting'],function(){
+
+    Route::get('edit/{id}',[App\Http\Controllers\UserController::class,'edit'])->name('edit');
+    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update')
+
+
+
+
+
+})
