@@ -24,10 +24,10 @@ Auth::routes();
 Route::group(['as' => 'usersetting'],function(){
 
     Route::get('edit/{id}',[App\Http\Controllers\UserController::class,'edit'])->name('edit');
-    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update')
+    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
 
 
 
 
 
-})
+});

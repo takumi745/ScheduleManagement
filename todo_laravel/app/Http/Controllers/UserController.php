@@ -19,7 +19,7 @@ class UserController extends Controller
 
         //ビューに返す
         return view('edit',['auth'=>$auth]);
-
+        
       }
       
       /**
