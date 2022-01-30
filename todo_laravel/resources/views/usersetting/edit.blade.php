@@ -2,7 +2,8 @@
 
 @section('content')
 <H1>ユーザー情報編集</H1>
-<form metohd="POST" action="">
+
+<form method="POST" action="{{route('update',[$id = Auth::id()]">
   @csrf
   <div>
     <label for="Form-name"></label>

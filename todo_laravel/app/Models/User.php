@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_name'
     ];
 
     /**
@@ -41,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+    * ユーザーの保持する全タスク
+    */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
