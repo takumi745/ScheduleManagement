@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 // テスト用トップページ
+//Route::get('/index', [App\Http\Controllers\test_todoController::class, 'test_todo_index'])->name('test_todo_index');
+
+// テスト用左ページ
 Route::get('/test_todo', [App\Http\Controllers\test_todoController::class, 'test_todo'])->name('test_todo');
 
 // todo新規入力ページ
@@ -34,17 +38,11 @@ Route::post('/todo_save', [App\Http\Controllers\TodoController::class, 'todo_sav
 Route::post('/todo_list', [App\Http\Controllers\TodoController::class, 'todo_list'])->name('todo_list');
 
 // 選択したtodoの編集
-Route::get('/todo_edit/{id}',[App\Http\controllers\TodoController::class,'todo_edit'])->name('todo_edit');
+Route::get('/todo_edit/{id}',[App\Http\Controllers\TodoController::class,'todo_edit'])->name('todo_edit');
 
 // todoデータベース更新
 Route::post('/todo_update', [App\Http\Controllers\TodoController::class, 'todo_update'])->name('todo_update');
 
 // 選択したtodoの削除
-Route::get('/todo_delete/{id}',[App\Http\controllers\TodoController::class,'todo_delete'])->name('todo_delete');
-
-
-
-
-
-
+Route::get('/todo_delete/{id}',[App\Http\Controllers\TodoController::class,'todo_delete'])->name('todo_delete');
 

@@ -1,3 +1,7 @@
+<!-- @extends('layouts.test_todo_index') -->
+
+<!-- @section('calendar_area') -->
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -25,3 +29,4 @@
     </form>
 </body>
 </html>
+<!-- @endsection -->

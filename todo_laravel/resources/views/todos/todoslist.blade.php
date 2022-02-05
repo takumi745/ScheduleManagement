@@ -1,6 +1,6 @@
-<!-- @extends('layouts.app') -->
- 
-@section('content')
+<!-- @extends('layouts.test_todo_index') -->
+<!-- @include('todos.test_todo') -->
+<!-- @section('todo_list_area') -->
  
 <!-- タスク一覧表示 -->
 
@@ -56,5 +56,5 @@
     </div>
 </div>
 
-@endsection
+<!-- @endsection -->
 

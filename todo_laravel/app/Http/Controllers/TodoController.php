@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Todo;
 
+use Validator;
+
 class TodoController extends Controller
 {
     //
@@ -25,23 +27,73 @@ class TodoController extends Controller
         //$new['todo'] = "todo-test";
         //$new['comment'] = "comment-test";
 
-        return view('todos.todo_new', ['date'=>$date],['new' => $new]);
+        // return view('todos.todo_new', ['date'=>$date],['new' => $new]);
+
+        return view('todos.todo_new', ['new' => $new], ['err_msg' => NULL ]);
+        
     }
 
     //データベースにtodoを新規追加する
-    public function todo_save()
+    public function todo_save(Request $request)
     {
+        //バリデーション
+        //$validate_rule = [
+            //'new_start_time' => 'required',
+            //'new_ending_time' => 'required',
+            //'new_todo' => 'required|string|max:128',
+            //'new_comment' => 'max:128',
+        //];
+        //$this->validate($request, $validate_rule);
 
-        $save_todo = new \App\Models\Todo;
-        $save_todo -> status = "active";
-        $save_todo -> user_id = $_POST['new_user_id'];
-        $save_todo -> start_time = $_POST['new_start_time'];
-        $save_todo -> ending_time = $_POST['new_ending_time'];
-        $save_todo -> todo = $_POST['new_todo'];
-        $save_todo ->  comment = $_POST['new_comment'];
-        $save_todo -> save();
+        $validator = Validator::make($request->all(),[
+            // バリデーションルール
+            'new_user_id' => 'required|integer',        //ユーザー入力しないはずのデータ
+            'new_start_time' => 'required',
+            'new_ending_time' => 'required|after_or_equal:new_start_time',
+            'new_todo' => 'required|string|max:128',
+            'new_comment' => 'max:128',
+        ],
+        [
+            // エラーメッセージ
+            'new_user_id.required' => 'ユーザーIDが入力されていません。',       //ユーザー入力しないはずのデータ
+            'new_user_id.integer' => 'ユーザーIDが数値で入力されていません。',  //ユーザー入力しないはずのデータ
+            'new_strat_time.required' => '開始日時を入力してください。',
+            'new_ending_time.required' => '終了日時を入力してください。',
+            'new_ending_time.after_or_equal' => '開始時間と終了時間を正しく入力してください。',
+            'new_todo.required' => 'タイトルを入力してください。',
+            'new_todo.max' => 'タイトルは128文字以下で入力してください。',
+            'new_comment.max' => '内容は128文字以下で入力してください。',
+        ]);
 
-        return redirect('/test_todo');
+
+        if ($validator->fails()) {
+            $new['user_id'] = $_POST['new_user_id'];
+            $new['start_time'] = $_POST['new_start_time'];
+            $new['ending_time'] = $_POST['new_ending_time'];
+            $new['todo'] = $_POST['new_todo'];
+            $new['comment'] = $_POST['new_comment'];
+            
+//            return view('todos.todo_new',['new' => $new], ['err_msg' => $validator]);
+
+            $errs = $validator->errors();
+
+            return view('todos.todo_new',['new' => $new ], ['err_msg' => $errs ]);
+                        //->withErrors($validator)
+                        //->withInput();
+            //エラー時の処理
+        }
+        else{
+            $save_todo = new \App\Models\Todo;
+            $save_todo -> status = "active";
+            $save_todo -> user_id = $_POST['new_user_id'];
+            $save_todo -> start_time = $_POST['new_start_time'];
+            $save_todo -> ending_time = $_POST['new_ending_time'];
+            $save_todo -> todo = $_POST['new_todo'];
+            $save_todo ->  comment = $_POST['new_comment'];
+            $save_todo -> save();
+
+            return redirect('/test_todo');
+        }
     }
 
         //データベースにtodoを新規追加する

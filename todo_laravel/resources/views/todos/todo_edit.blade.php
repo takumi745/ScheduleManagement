@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<!-- @extends('layouts.test_todo_index') -->
+<!-- @section('todo_list_area') -->
 
 <head>
 <!-- アラート表示に必要なjavascript -->
@@ -75,3 +74,4 @@
 </form>
 </div>
 </body>
+<!-- @endsection -->

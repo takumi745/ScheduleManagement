@@ -12,4 +12,10 @@ class test_todoController extends Controller
         return view('todos.test_todo');
     }
 
+    //
+    public function test_todo_index()
+    {
+        return view('todos.test_todo_index');
+    }
+
 }
