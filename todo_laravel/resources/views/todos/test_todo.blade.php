@@ -2,6 +2,9 @@
 
 <!-- @section('calendar_area') -->
 
+
+
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>

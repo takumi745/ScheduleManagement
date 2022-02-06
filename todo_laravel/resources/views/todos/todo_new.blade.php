@@ -1,6 +1,16 @@
 <!-- @extends('layouts.test_todo_index') -->
-<!-- @include('todos.test_todo') -->
+
 <!-- @section('todo_list_area') -->
+
+
+
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
 <!-- アラート表示に必要なjavascript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
@@ -26,12 +36,11 @@
             return true;    //追加ボタン有効
         }
     }
-
-
 </script>
 
+</head>
 
-
+<body>
 <div style="text-align:center">
 <div>todo新規登録</div>
 
@@ -46,8 +55,8 @@
             @endforeach
         @endif
     @endif
-    <input name="new_user_id" value="{{ $new['user_id']}}" require> <!-- テストで user_id 表示させる用 -->
-    <!-- <input type="hidden" name="new_user_id" value="{{ $new['user_id']}}" required> user_id 表示させない -->
+    <!-- テストでは user_id 表示させる  type="hidden"     -->
+    <input  name="new_user_id" value="{{ $new['user_id']}}" required> <!-- user_id 表示させない -->
     
     <!-- 開始日時 -->
     @if(!empty($err_msg))
@@ -57,7 +66,7 @@
             @endforeach
         @endif
     @endif
-    <p>開始日時<input type="datetime-local" name="new_start_time" placeholder= "開始日時" value=<?=date('Y-m-d\TH:i', strtotime($new['start_time']))?> ></p>
+    <p>開始日時<input type="datetime-local" name="new_start_time" placeholder= "開始日時" value=<?=date('Y-m-d\TH:i', strtotime($new['start_time']))?> required></p>
     
     <!-- 終了日時 -->
     @if(!empty($err_msg))
@@ -97,5 +106,4 @@
 </form>
 </div>
 
-
-<!-- @endsection -->
+</body>
