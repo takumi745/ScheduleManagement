@@ -1,10 +1,5 @@
-<!-- @extends('layouts.test_todo_index') -->
-
-<!-- @section('calendar_area') -->
-
-
-
-
+@extends('layouts.test_todo_index')
+@section('calendar_area')
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -18,18 +13,18 @@
     <div>todo新規</div>
     <form action="/todo_new" method="POST">
         @csrf
-        <input type="text" name="login_user_id">
-        <input type="date" name="date">
+        <lavel>user id:<input type="text" name="login_user_id" ></lavel>
+        <lavel>date:<input type="date" name="date"></lavel>
         <input type="submit" value="新規">
     </form>
 
     <div>選択日時一覧</div>
     <form action="/todo_list" method="POST">
         @csrf
-        <input type="text" name="login_user_id">
-        <input type="date" name="date">
+        <lavel>user id:<input type="text" name="login_user_id"></lavel>
+        <lavel>date:<input type="date" name="date"></lavel>
         <input type="submit" value="一覧">
     </form>
 </body>
 </html>
-<!-- @endsection -->
+@endsection

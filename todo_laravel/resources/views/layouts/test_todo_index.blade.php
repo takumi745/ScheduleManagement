@@ -1,4 +1,4 @@
-<!--
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -9,16 +9,7 @@
 </head>
 
 
-<style>
-    .left{
-        display:flex;
-        width:2000px;
-    }
 
-    .right{
-        display:flex;
-    }
-</style>
 
 <body>
     <div class='left'>
@@ -29,4 +20,3 @@
     </div>
 </body>
 </html>
--->
