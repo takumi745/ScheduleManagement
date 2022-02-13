@@ -43,7 +43,6 @@ class UserController extends Controller
         foreach ($form as $key => $value) {
 
         // nullの場合更新対象から除外する
-
           if($value == null) {
             unset($form[$key]);
           }
