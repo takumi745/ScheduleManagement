@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +24,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+     public function index()
     {
-        return view('home');
+        $auth= Auth::user();
+        
+        return view('home' ,['auth' => $auth]);
     }
+/*     public function index()
+    {
+        // $users=user::findOrFail('users')->get();
+        return view('home');
+    } */
 }
