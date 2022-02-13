@@ -16,9 +16,7 @@ class ExampleTest extends DuskTestCase
     public function testBasicExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/test_todo')
-                ->click('新規')
-                >seePageIs('/todo_new');
+            $browser->visit('/test_todo');
         });
     }
 }

@@ -19,9 +19,9 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        //if (! static::runningInSail()) {
-            //static::startChromeDriver();
-        //}
+        if (! static::runningInSail()) {
+            static::startChromeDriver();
+        }
     }
 
     /**
@@ -44,7 +44,7 @@ abstract class DuskTestCase extends BaseTestCase
         })->all());
 
         return RemoteWebDriver::create(
-            $_ENV['DUSK_DRIVER_URL'] ?? 'http://127.0.0.1:8000/',
+            $_ENV['DUSK_DRIVER_URL'] ?? '\vendr/ralavel/dusk/bin',
             DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
