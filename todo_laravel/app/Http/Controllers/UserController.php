@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Models\User;
 
 
 class UserController extends Controller
@@ -22,9 +22,9 @@ class UserController extends Controller
       */
       public function edit($id)
       {
-        $id = Auth::id();
-        //ビュー返す
-        return view('edit',['id'=>$id]);
+        $Auth= Auth::user();
+        
+        return view('user_setting.edit',['auth'=>$Auth]);
 
       }
       
@@ -33,14 +33,14 @@ class UserController extends Controller
        */
       public function update(Request $request , $id)
       {
-        $member=Member::findOrFail($id);
+        // 対象レコード取得
+        $auth = User::find($id);
 
-        $member->name=$request->input('name');
-        $member->phone=$request->input('phone');
-        $member->email=$request->input('email');
+        // リクエストデータ受取
+        $form = $request->only('name','email');
 
-        //DBに保存
-        $member->save();
+        // レコードアップデート
+        $auth->$form->save();
 
         //処理が終わったら(/home)にリダイレクト
         return redirect('home');

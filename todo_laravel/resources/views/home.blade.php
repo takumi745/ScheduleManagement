@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <a href="{{route('edit',[ $id = Auth::id()])}}">編集画面</a>
+                {{$auth->name}}<br>
+                {{$auth->email}}
             <!--    <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
