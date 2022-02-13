@@ -15,7 +15,7 @@
         @csrf
         <lavel>user id:<input type="text" name="login_user_id" ></lavel>
         <lavel>date:<input type="date" name="date"></lavel>
-        <input type="submit" value="新規">
+        <input type="submit" value="新規" dusk="newbutton">
     </form>
 
     <div>選択日時一覧</div>
