@@ -34,13 +34,23 @@ class UserController extends Controller
       public function update(Request $request , $id)
       {
         // 対象レコード取得
-        $auth = User::find($id);
+        $Auth = User::find($id);
 
         // リクエストデータ受取
-        $form = $request->only('name','email');
+        $form = $request->input();
+
+        // フォーム要素の評価
+        foreach ($form as $key => $value) {
+
+        // nullの場合更新対象から除外する
+
+          if($value == null) {
+            unset($form[$key]);
+          }
+      }
 
         // レコードアップデート
-        $auth->$form->save();
+        $Auth->fill($form)->save();
 
         //処理が終わったら(/home)にリダイレクト
         return redirect('home');

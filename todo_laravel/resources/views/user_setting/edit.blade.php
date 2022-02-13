@@ -11,11 +11,7 @@
   </div>
   <div>
     <label for="Form-email">メールアドレス</label>
-    <input type="text" name="name" id="form-email">
-  </div>
-  <div>
-    <label for="Form-name"></label>
-    <input type="text" name="name" id="form-name">
+    <input type="text" name="email" id="form-email">
   </div>
   <button type="submit">編集</button>
 @endsection
