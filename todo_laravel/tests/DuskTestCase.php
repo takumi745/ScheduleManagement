@@ -20,7 +20,7 @@ abstract class DuskTestCase extends BaseTestCase
     public static function prepare()
     {
         if (! static::runningInSail()) {
-            //static::startChromeDriver();
+            static::startChromeDriver();
         }
     }
 
@@ -43,15 +43,11 @@ abstract class DuskTestCase extends BaseTestCase
             ]);
         })->all());
 
-        //return RemoteWebDriver::create(
-            //$_ENV['DUSK_DRIVER_URL'] ?? '\vendr/ralavel/dusk/bin',
-            //DesiredCapabilities::chrome()->setCapability(
-                //ChromeOptions::CAPABILITY, $options
-            //)
-        //);
-        //http://127.0.0.1:8000
         return RemoteWebDriver::create(
-            'http://localhost:4444/wd/hub', DesiredCapabilities::phantomjs()
+            $_ENV['DUSK_DRIVER_URL'] ?? '\vendr/ralavel/dusk/bin',
+            DesiredCapabilities::chrome()->setCapability(
+                ChromeOptions::CAPABILITY, $options
+            )
         );
     }
 
