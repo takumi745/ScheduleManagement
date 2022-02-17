@@ -4,13 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-<<<<<<< HEAD
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/calendar', function () {
     return view('calendar');
 });
-=======
 // テスト用左ページ
 Route::get('/test_todo', [App\Http\Controllers\test_todoController::class, 'test_todo'])->name('test_todo');
 
@@ -32,4 +30,3 @@ Route::post('/todo_update', [App\Http\Controllers\TodoController::class, 'todo_u
 // 選択したtodoの削除
 Route::get('/todo_delete/{id}',[App\Http\Controllers\TodoController::class,'todo_delete'])->name('todo_delete');
 
->>>>>>> main
