@@ -39,7 +39,8 @@
                 }).done(function(result){
                 /* 通信成功時 */
                 // $('.result').html(result); //取得したHTMLを.resultに反映
-                console.log(result);
+                // console.log(result);
+                location.href = 'http://127.0.0.1:8000/test_todo';
                 }).fail(function(result){
                 /* 通信失敗時 */
                 alert('通信失敗！');
