@@ -1,0 +1,13 @@
+diff a/todo_laravel/tests/Browser/ExampleTest.php b/todo_laravel/tests/Browser/ExampleTest.php	(rejected hunks)
+@@ -2,8 +2,10 @@
+ 
+ namespace Tests\Browser;
+ 
++use App\Models\User;
+ use Illuminate\Foundation\Testing\DatabaseMigrations;
+-use Laravel\Dusk\Browser;
++/** use Laravel\Dusk\Browser; **/
++use Laravel\Dusk\Chrome;
+ use Tests\DuskTestCase;
+ 
+ class ExampleTest extends DuskTestCase
