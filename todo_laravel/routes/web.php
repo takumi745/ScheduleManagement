@@ -7,9 +7,9 @@ use app\Http\Controllers\UserController;
 Auth::routes();
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
-    //ユーザー編集画面
+ 
      Route::get('/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
-    //ユーザー更新
+
     Route::post('/update/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
 
 
