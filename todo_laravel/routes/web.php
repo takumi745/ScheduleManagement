@@ -6,7 +6,7 @@ use app\Http\Controllers\UserController;
 
 Auth::routes();
 
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
+ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/'); 
  
      Route::get('/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
 
