@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserConfigRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -31,13 +31,13 @@ class UserController extends Controller
       /**
        * プロフィール更新
        */
-      public function update(Request $request , $id)
+      public function update(UserConfigRequest $request , $id)
       {
         // 対象レコード取得
         $Auth = User::find($id);
 
         // リクエストデータ受取
-        $form = $request->input();
+        $form = $request->validated();
 
         // フォーム要素の評価
         foreach ($form as $key => $value) {
