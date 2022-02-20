@@ -47,6 +47,30 @@
                 });
             });
         });
+
+        let todoList = [];
+        // todoListにデータを入れるためのループ　laravel独自のループでデータをJsで使うため
+        @foreach($todos as $todo)
+            // のちのif文で合わせる必要があるから
+            todoList.push("{{date('Y-m-d', strtotime($todo->start_time));}}");
+        @endforeach
+        $(document).ready(function(){
+            let calcel = $('.fc-daygrid-day');
+             // カレンダーのループ
+            calcel.each(function(index, element){
+                var data_date = $(this).attr('data-date');
+                var calcount = 0;
+                // データの中身を見に行っている
+                $.each(todoList, function(num, value){
+                    if (data_date === value) {
+                        calcount++;
+                    }
+                });
+                console.log(calcount);
+                $(this).children('.fc-daygrid-day-frame').append('<p>' + calcount + '</p>');
+            });
+        });
     </script>
+    {{-- {{ dump($todos); }} --}}
   </body>
 </html>

@@ -19,6 +19,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/calendar', function () {
     return view('calendar');
 });
+Route::get('/calendar', [App\Http\Controllers\CalenderController::class, 'index'])->name('index');
+
 // テスト用左ページ
 Route::get('/test_todo', [App\Http\Controllers\test_todoController::class, 'test_todo'])->name('test_todo');
 

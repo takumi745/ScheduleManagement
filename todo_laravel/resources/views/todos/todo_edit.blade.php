@@ -60,7 +60,7 @@
                 @endif
             @endif
             <p>開始日時<input type="datetime-local" name="edit_start_time" placeholder= "開始日時" value=<?=date('Y-m-d\TH:i', strtotime($edit['start_time']))?> required></p>
-            
+
             <!-- 終了日時 -->
             @if(!empty($err_msg))
                 @if ($err_msg->any())
@@ -70,7 +70,7 @@
                 @endif
             @endif
             <p>終了日時<input type="datetime-local" name="edit_ending_time" placeholder= "終了日時" value=<?=date('Y-m-d\TH:i', strtotime($edit['ending_time']))?> required></p>
-            
+
             <!-- タイトル -->
             @if(!empty($err_msg))
                 @if ($err_msg->any())
@@ -79,8 +79,8 @@
                     @endforeach
                 @endif
             @endif
-            <p>タイトル<input type="text" name="edit_todo" placeholder= "タイトル" maxlength="255" value="{{ $edit['todo'] }}" ></p>
-            
+            <p>タイトル<input type="text" name="edit_todo" placeholder= "タイトル" maxlength="126" value="{{ $edit['todo'] }}" ></p>
+
             <!-- 内容-->
             @if(!empty($err_msg))
                 @if ($err_msg->any())
@@ -89,7 +89,7 @@
                     @endforeach
                 @endif
             @endif
-            <p>内容<input type="text" name="edit_comment" placeholder= "内容" maxlength="255" value="{{ $edit['comment'] }}" ></p>
+            <p>内容<input type="text" name="edit_comment" placeholder= "内容" maxlength="126" value="{{ $edit['comment'] }}" ></p>
 
             <button><a href="/test_todo">キャンセル</a></button>
             <input type="button" class="btn btn-danger" name="delete" onclick="return edit_delete()" value="削除">

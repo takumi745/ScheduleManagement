@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Calendar;
+use App\Models\Todes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,12 +12,13 @@ class CalenderController extends Controller
     //カレンダーデータを取得する処理
     public function index()
     {
-        $calendars = DB::table('calendars')->gat();
+        $Todos = DB::table('todos')->get();
 
-        foreach ($calendars as $calendar) {
-            echo $calendar->name;
-        }
+        // foreach ($calendars as $calendar) {
+        //     echo $calendar->name;
+        // }
         // return Calendar::all();
+        return view('calendar', ['todos' => $Todos] );
     }
 
     // public function show(int $id)
