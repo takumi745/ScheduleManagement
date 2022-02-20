@@ -28,8 +28,9 @@ class UserConfigRequest extends FormRequest
     public function rules()
     {
         return [
-        'name' => ['max:16','nullable'],
+        'name' => ['max:16','nullable'],//null許容
         'email' => ['nullable','email',Rule::unique('users')->ignore(Auth::id())
+        // 重複チェック。Rule::unique('テーブル名')->ignore(主キー, '主キーのカラム名'（今回はログインから取得）)null許容
         ]
         ];
     }
