@@ -26,7 +26,7 @@ class TodoController extends Controller
         // バリデーション
         $validator = Validator::make($request->all(),[
             // バリデーションルール
-            'new_user_id' => 'required|integer',
+            'new_user_id' => 'required|integer|digits_between:1,10',
             'new_start_time' => 'required',
             'new_ending_time' => 'required|after_or_equal:new_start_time',
             'new_todo' => 'required|max:128',
@@ -36,6 +36,7 @@ class TodoController extends Controller
             // エラーメッセージ
             'new_user_id.required' => 'ユーザーIDが入力されていません。',
             'new_user_id.integer' => 'ユーザーIDが数値で入力されていません。',
+            'new_user_id.digits_between' => 'ユーザーIDの桁数が1～10より外れています。',
             'new_strat_time.required' => '開始日時を入力してください。',
             'new_ending_time.required' => '終了日時を入力してください。',
             'new_ending_time.after_or_equal' => '開始時間と終了時間を正しく入力してください。',
@@ -79,7 +80,7 @@ class TodoController extends Controller
         $validator = Validator::make($request->all(),[
             // バリデーションルール
             'edit_id' => 'required|integer',
-            'edit_user_id' => 'required|integer',
+            'edit_user_id' => 'required|integer|digits_between:1,10',
             'edit_start_time' => 'required',
             'edit_ending_time' => 'required|after_or_equal:edit_start_time',
             'edit_todo' => 'required|max:128',
@@ -91,6 +92,7 @@ class TodoController extends Controller
             'edit_id.integer' => 'todo IDが数値で入力されていません。',
             'edit_user_id.required' => 'ユーザーIDが入力されていません。',
             'edit_user_id.integer' => 'ユーザーIDが数値で入力されていません。',
+            'edit_user_id.digits_between' => 'ユーザーIDの桁数が1～10より外れています。',
             'edit_strat_time.required' => '開始日時を入力してください。',
             'edit_ending_time.required' => '終了日時を入力してください。',
             'edit_ending_time.after_or_equal' => '開始時間と終了時間を正しく入力してください。',
