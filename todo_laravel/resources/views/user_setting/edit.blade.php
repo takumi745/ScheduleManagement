@@ -1,29 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<H1>ユーザー情報編集</H1>
 
-<form method="POST" action="{{route('update',['id'=>$auth->id])}}" onSubmit="return check()">
+
+<H1 class="text-center">ユーザー情報編集</H1>
+<div class="d-flex justify-content-center">
+<form method="POST" class="w-50 h-50" action="{{route('update',['id'=>$auth->id])}}" onSubmit="return check()">
   @csrf
-  <div>
+  <div class="mb-3">
     <label for="Form-name">名前</label>
-    <input type="text" name="name" id="form-name" value="{{$auth->name}}">
+    <input type="text" class="form-control" name="name" id="form-name" value="{{$auth->name}}">
   </div>
    @if($errors->has('name'))
 			@foreach($errors->get('name') as $message)
 				{{ $message }}
 			@endforeach
 		@endif
-  <div>
+  <div class="mb-3">
     <label for="Form-email">メールアドレス</label>
-    <input type="text" name="email" id="form-email">
+    <input type="text" class="form-control" name="email" id="form-email">
   </div>
   @if($errors->has('email'))
 			@foreach($errors->get('email') as $message)
 				{{ $message }}
 			@endforeach
 		@endif
-  <button type="submit">編集</button>
+  <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary">編集</button></div>
+</div>
 
   <script type="text/javascript"> 
   function check(){
