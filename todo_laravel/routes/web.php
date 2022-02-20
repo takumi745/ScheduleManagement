@@ -6,14 +6,19 @@ use app\Http\Controllers\UserController;
 
 Auth::routes();
 
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
- 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
      Route::get('/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
 
     Route::post('/update/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
 
 
 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/calendar', function () {
+    return view('calendar');
+});
 // テスト用左ページ
 Route::get('/test_todo', [App\Http\Controllers\test_todoController::class, 'test_todo'])->name('test_todo');
 
